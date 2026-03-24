@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Email Verification</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="myController">
+<h2>Enter your email : </h2>
+<form name="myForm" >
+
+    <label>Email:</label>
+    <input type="email"
+           name="email"
+           ng-model="user.email"
+           required>
+
+    <div style="color:red" 
+         ng-show="myForm.email.$touched && myForm.email.$invalid">
+        Enter a valid email address.
+    </div>
+    <br><br>
+    <button ng-disabled="myForm.$invalid">Submit</button>
+    <div style="color:green" 
+         ng-show="myForm.email.$valid && myForm.email.$touched">
+        ✅ Mail is verified
+    </div>
+
+</form>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myController", function($scope) {
+        $scope.user = {};
+    });
+</script>
+
+</body>
+</html>
